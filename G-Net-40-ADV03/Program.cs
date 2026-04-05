@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
+using System.Numerics;
 using G_Net_40_ADV03.Collection_Helper;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -76,6 +78,71 @@ namespace G_Net_40_ADV03
             //CollectionHelper.PrintCollection("Grade Strings", gradeStrings);
 
             #endregion
+
+            #region Exercise 2
+
+            // Exercise 2: Leaderboard
+            // Create a leaderboard that automatically sorts players by score.
+
+            // 1)Add: 500 = "Ahmed", 200 = "Sara", 800 = "Ali", 350 = "Mona"
+            // 2)Print all entries(they should be sorted by score automatically)
+            // 3)Access the first key and first value
+            // 4)Check if score 500 exists
+            // 5)Safely get the player with score 999
+            // 6)Remove the player with score 200 and print the updated list
+
+            //---------------------------------------------------------------------------------------------------------
+
+            // 1)Add: 500 = "Ahmed", 200 = "Sara", 800 = "Ali", 350 = "Mona"
+
+            //SortedList<int, string> leaderboard = new SortedList<int, string>
+            //{
+            //    [500] = "Ahmed" ,
+            //    [200] = "Sara" ,
+            //    [800] = "Ali" ,
+            //    [350] = "Mona" 
+            //};
+
+            //---------------------------------------------------------------------------------------------------------
+
+            // 2)Print all entries(they should be sorted by score automatically)
+            //foreach (var player in leaderboard)
+            //{
+            //    Console.WriteLine($"Score: {player.Key}, Player: {player.Value}");
+            //}
+
+            //---------------------------------------------------------------------------------------------------------
+            // 3)Access the first key and first value
+            //Console.WriteLine(leaderboard.Keys[0]);
+            //Console.WriteLine(leaderboard.Values[0]);
+            //---------------------------------------------------------------------------------------------------------
+
+            // 4)Check if score 500 exists
+
+            //bool score500Exists = leaderboard.TryGetValue(500, out string playerName);
+            //Console.WriteLine(score500Exists);
+            //Console.WriteLine($"Player name if exist :{playerName}");
+
+            //---------------------------------------------------------------------------------------------------------
+
+            // 5)Safely get the player with score 999
+
+            //bool score999Exists = leaderboard.TryGetValue(999, out string playerName999);
+            //Console.WriteLine(score999Exists ? playerName999 : score999Exists);
+
+            //---------------------------------------------------------------------------------------------------------
+
+            // 6)Remove the player with score 200 and print the updated list
+
+            //leaderboard.Remove(200);
+
+            //CollectionHelper.PrintCollection("Updated Leaderboard", leaderboard.Select(p => $"(Score: {p.Key}, Player: {p.Value})"));
+
+            //---------------------------------------------------------------------------------------------------------
+
+
+            #endregion
+
 
 
         }

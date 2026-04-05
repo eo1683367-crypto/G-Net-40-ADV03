@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Numerics;
+using System.Xml.Linq;
 using G_Net_40_ADV03.Collection_Helper;
+using Microsoft.VisualBasic;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace G_Net_40_ADV03
@@ -140,6 +144,85 @@ namespace G_Net_40_ADV03
 
             //---------------------------------------------------------------------------------------------------------
 
+
+            #endregion
+
+            #region Exercise 3
+
+         //   // Exercise 3: Phone Book
+         //   // Build a phone book application.
+
+         //   // 1) Create a Collection with 4 contacts(name → phone number)
+         //   // 2) Add a new contact using [] syntax (add or update)
+         //   // 3) Try adding a duplicate using .Add() — catch the exception and print the error
+         //   // 4) Try adding a duplicate using .TryAdd() — print whether it succeeded
+         //   // 5) Search for a contact that doesn’t exist
+         //   // 6) Get a contact with a fallback of "Not Found"
+         //   // 7) Print all Keys on one line, then all Values on another line
+
+         //   //---------------------------------------------------------------------------------------------------------
+
+
+         //   // 1) Create a Collection with 4 contacts(name → phone number)
+
+         //   Dictionary<string, int> phoneBook = new()
+         //   {
+         //       ["Ahmed"] = 100345677,
+         //       ["Sara"] = 101222444,
+         //       ["Ali"] = 10567458,
+         //       ["Mona"] = 103457890
+         //   };
+
+         //  // ---------------------------------------------------------------------------------------------------------
+
+         //  //  2) Add a new contact using [] syntax (add or update)
+
+         //   phoneBook["Omar"] = 109876543;
+
+         //   CollectionHelper.PrintCollection("Phone Book", phoneBook);
+
+         //  // ---------------------------------------------------------------------------------------------------------
+
+         //   // 3) Try adding a duplicate using .Add() — catch the exception and print the error
+
+         //   try
+         //   {
+         //       phoneBook.Add("Ahmed", 12288837);
+         //   }
+         //   catch (Exception ex)
+         //   {
+         //       Console.WriteLine($"adding a duplicate Key! {ex}");
+         //   }
+
+         // //  ---------------------------------------------------------------------------------------------------------
+
+         ////    4) Try adding a duplicate using .TryAdd() — print whether it succeeded
+
+         //   bool added = phoneBook.TryAdd("Ahmed", 122148998);
+         //   Console.WriteLine(added ? "TryAdd succeeded: Ahmed → 0999 was added" : "TryAdd failed: Ahmed already exists");
+
+         ////   ---------------------------------------------------------------------------------------------------------
+
+         // //   5) Search for a contact that doesn’t exist
+
+         //   bool tryGet = phoneBook.TryGetValue("Yara", out int phoneNumberYara);
+         //   Console.WriteLine(tryGet ? $"Yara's phone number: {phoneNumberYara}" : "Yara not found in the phone book");
+
+         // //  ---------------------------------------------------------------------------------------------------------
+
+         ////    6) Get a contact with a fallback of "Not Found"
+
+         //   string phoneNumber = phoneBook.TryGetValue("Ahmed", out int number) ? number.ToString() : "Not Found";
+         //   Console.WriteLine(phoneNumber);
+
+         //  // ---------------------------------------------------------------------------------------------------------
+
+         // //   7) Print all Keys on one line, then all Values on another line
+
+         //   CollectionHelper.PrintCollection("Contact Names ", phoneBook.Keys);
+         //   CollectionHelper.PrintCollection("Contact Numbers ", phoneBook.Values);
+
+         //  // ---------------------------------------------------------------------------------------------------------
 
             #endregion
 

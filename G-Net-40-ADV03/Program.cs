@@ -1,7 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Numerics;
+using System.Xml;
 using System.Xml.Linq;
 using G_Net_40_ADV03.Collection_Helper;
 using Microsoft.VisualBasic;
@@ -149,80 +152,170 @@ namespace G_Net_40_ADV03
 
             #region Exercise 3
 
-         //   // Exercise 3: Phone Book
-         //   // Build a phone book application.
+            //   // Exercise 3: Phone Book
+            //   // Build a phone book application.
 
-         //   // 1) Create a Collection with 4 contacts(name → phone number)
-         //   // 2) Add a new contact using [] syntax (add or update)
-         //   // 3) Try adding a duplicate using .Add() — catch the exception and print the error
-         //   // 4) Try adding a duplicate using .TryAdd() — print whether it succeeded
-         //   // 5) Search for a contact that doesn’t exist
-         //   // 6) Get a contact with a fallback of "Not Found"
-         //   // 7) Print all Keys on one line, then all Values on another line
+            //   // 1) Create a Collection with 4 contacts(name → phone number)
+            //   // 2) Add a new contact using [] syntax (add or update)
+            //   // 3) Try adding a duplicate using .Add() — catch the exception and print the error
+            //   // 4) Try adding a duplicate using .TryAdd() — print whether it succeeded
+            //   // 5) Search for a contact that doesn’t exist
+            //   // 6) Get a contact with a fallback of "Not Found"
+            //   // 7) Print all Keys on one line, then all Values on another line
 
-         //   //---------------------------------------------------------------------------------------------------------
+            //   //---------------------------------------------------------------------------------------------------------
 
 
-         //   // 1) Create a Collection with 4 contacts(name → phone number)
+            //   // 1) Create a Collection with 4 contacts(name → phone number)
 
-         //   Dictionary<string, int> phoneBook = new()
-         //   {
-         //       ["Ahmed"] = 100345677,
-         //       ["Sara"] = 101222444,
-         //       ["Ali"] = 10567458,
-         //       ["Mona"] = 103457890
-         //   };
+            //   Dictionary<string, int> phoneBook = new()
+            //   {
+            //       ["Ahmed"] = 100345677,
+            //       ["Sara"] = 101222444,
+            //       ["Ali"] = 10567458,
+            //       ["Mona"] = 103457890
+            //   };
 
-         //  // ---------------------------------------------------------------------------------------------------------
+            //  // ---------------------------------------------------------------------------------------------------------
 
-         //  //  2) Add a new contact using [] syntax (add or update)
+            //  //  2) Add a new contact using [] syntax (add or update)
 
-         //   phoneBook["Omar"] = 109876543;
+            //   phoneBook["Omar"] = 109876543;
 
-         //   CollectionHelper.PrintCollection("Phone Book", phoneBook);
+            //   CollectionHelper.PrintCollection("Phone Book", phoneBook);
 
-         //  // ---------------------------------------------------------------------------------------------------------
+            //  // ---------------------------------------------------------------------------------------------------------
 
-         //   // 3) Try adding a duplicate using .Add() — catch the exception and print the error
+            //   // 3) Try adding a duplicate using .Add() — catch the exception and print the error
 
-         //   try
-         //   {
-         //       phoneBook.Add("Ahmed", 12288837);
-         //   }
-         //   catch (Exception ex)
-         //   {
-         //       Console.WriteLine($"adding a duplicate Key! {ex}");
-         //   }
+            //   try
+            //   {
+            //       phoneBook.Add("Ahmed", 12288837);
+            //   }
+            //   catch (Exception ex)
+            //   {
+            //       Console.WriteLine($"adding a duplicate Key! {ex}");
+            //   }
 
-         // //  ---------------------------------------------------------------------------------------------------------
+            // //  ---------------------------------------------------------------------------------------------------------
 
-         ////    4) Try adding a duplicate using .TryAdd() — print whether it succeeded
+            ////    4) Try adding a duplicate using .TryAdd() — print whether it succeeded
 
-         //   bool added = phoneBook.TryAdd("Ahmed", 122148998);
-         //   Console.WriteLine(added ? "TryAdd succeeded: Ahmed → 0999 was added" : "TryAdd failed: Ahmed already exists");
+            //   bool added = phoneBook.TryAdd("Ahmed", 122148998);
+            //   Console.WriteLine(added ? "TryAdd succeeded: Ahmed → 0999 was added" : "TryAdd failed: Ahmed already exists");
 
-         ////   ---------------------------------------------------------------------------------------------------------
+            ////   ---------------------------------------------------------------------------------------------------------
 
-         // //   5) Search for a contact that doesn’t exist
+            // //   5) Search for a contact that doesn’t exist
 
-         //   bool tryGet = phoneBook.TryGetValue("Yara", out int phoneNumberYara);
-         //   Console.WriteLine(tryGet ? $"Yara's phone number: {phoneNumberYara}" : "Yara not found in the phone book");
+            //   bool tryGet = phoneBook.TryGetValue("Yara", out int phoneNumberYara);
+            //   Console.WriteLine(tryGet ? $"Yara's phone number: {phoneNumberYara}" : "Yara not found in the phone book");
 
-         // //  ---------------------------------------------------------------------------------------------------------
+            // //  ---------------------------------------------------------------------------------------------------------
 
-         ////    6) Get a contact with a fallback of "Not Found"
+            ////    6) Get a contact with a fallback of "Not Found"
 
-         //   string phoneNumber = phoneBook.TryGetValue("Ahmed", out int number) ? number.ToString() : "Not Found";
-         //   Console.WriteLine(phoneNumber);
+            //   string phoneNumber = phoneBook.TryGetValue("Ahmed", out int number) ? number.ToString() : "Not Found";
+            //   Console.WriteLine(phoneNumber);
 
-         //  // ---------------------------------------------------------------------------------------------------------
+            //  // ---------------------------------------------------------------------------------------------------------
 
-         // //   7) Print all Keys on one line, then all Values on another line
+            // //   7) Print all Keys on one line, then all Values on another line
 
-         //   CollectionHelper.PrintCollection("Contact Names ", phoneBook.Keys);
-         //   CollectionHelper.PrintCollection("Contact Numbers ", phoneBook.Values);
+            //   CollectionHelper.PrintCollection("Contact Names ", phoneBook.Keys);
+            //   CollectionHelper.PrintCollection("Contact Numbers ", phoneBook.Values);
 
-         //  // ---------------------------------------------------------------------------------------------------------
+            //  // ---------------------------------------------------------------------------------------------------------
+
+            #endregion
+
+            #region Exercise 4
+
+            // Exercise 4: Unique Email Validator
+
+            // Use Collection to manage unique email addresses.
+
+            // 1) Create a HashSet<string> with a case -insensitive comparer: new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+            // 2) Add these emails: "ahmed@test.com", "AHMED@test.com", "sara@test.com", "Sara@Test.Com"
+            // 3) Print Count — how many are actually stored? Explain why.
+            // 4) Create two sets: Set A = { 1, 2, 3, 4, 5 } and Set B = { 4,5,6,7,8}
+            // 5) Print the result of: UnionWith, IntersectWith, ExceptWith
+            // 6) Use IsSubsetOf to check if { 1,2} is a subset of Set A
+
+            //---------------------------------------------------------------------------------------------------------
+
+            // 1) Create a HashSet<string> with a case -insensitive comparer: new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+
+            //HashSet<string> emailSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+            //----------------------------------------------------------------------------------------------------------
+
+            // 2) Add these emails: "ahmed@test.com", "AHMED@test.com", "sara@test.com", "Sara@Test.Com"
+
+            //emailSet.Add("ahmed@test.com");
+            //emailSet.Add("AHMED@test.com");
+            //emailSet.Add("sara@test.com");
+            //emailSet.Add("Sara@Test.Com");
+
+            //----------------------------------------------------------------------------------------------------------
+
+            // 3) Print Count — how many are actually stored? Explain why.
+
+            //Console.WriteLine($"Count of unique emails: {emailSet.Count}");
+
+            //CollectionHelper.PrintCollection("Email Set", emailSet);
+
+            // HashSet<T> stores unique elements only. Perfect for removing duplicates and fast membership testing with O(1) lookup.
+            // Because the HashSet was created with: StringComparer.OrdinalIgnoreCase 
+            // this makes the collection ignore letter casing when comparing strings.
+            // So:
+            // "ahmed@test.com" and "AHMED@test.com" are considered the same value
+            // "sara@test.com" and "Sara@Test.Com" are also considered the same value
+            // Since a HashSet only stores unique values, duplicates are automatically ignored.
+
+            //-----------------------------------------------------------------------------------------------------------
+
+            // 4) Create two sets: Set A = { 1, 2, 3, 4, 5 } and Set B = { 4,5,6,7,8}
+
+            //HashSet<int> setA =  [ 1, 2, 3, 4, 5 ];
+            //HashSet<int> setB =  [ 4, 5, 6, 7, 8 ];
+
+            //CollectionHelper.PrintCollection("Set A", setA);
+            //CollectionHelper.PrintCollection("Set B", setB);
+            //-----------------------------------------------------------------------------------------------------------
+
+            // 5) Print the result of: UnionWith, IntersectWith, ExceptWith
+
+            // UnionWith
+
+            //HashSet<int> resultSet = new(setA);
+
+            //resultSet.UnionWith(setB);
+            //CollectionHelper.PrintCollection<int>("Result union with ", resultSet);
+
+            // IntersectWith
+
+            //HashSet<int> resultSet = new(setA);
+
+            //resultSet.IntersectWith(setB);
+            //CollectionHelper.PrintCollection<int>("Result Intersect with ", resultSet);
+
+            // ExceptWith
+
+            //HashSet<int> resultSet = new(setA);
+
+            //resultSet.ExceptWith(setB);
+            //CollectionHelper.PrintCollection<int>("Result Except With ", resultSet);
+
+            //-----------------------------------------------------------------------------------------------------------
+
+            // 6) Use IsSubsetOf to check if { 1,2} is a subset of Set A
+
+            //bool isSubset = new HashSet<int> { 1, 2 }.IsSubsetOf(setA);
+            //Console.WriteLine($"{{1,2}} IsSubsetOf SetA: {isSubset}");
+
+            //------------------------------------------------------------------------------------------------------------
+
 
             #endregion
 

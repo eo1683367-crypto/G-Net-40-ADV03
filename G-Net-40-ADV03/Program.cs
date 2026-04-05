@@ -2,8 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Globalization;
 using System.Numerics;
+using System.Runtime.Intrinsics.X86;
 using System.Xml;
 using System.Xml.Linq;
 using G_Net_40_ADV03.Collection_Helper;
@@ -317,6 +319,80 @@ namespace G_Net_40_ADV03
             //------------------------------------------------------------------------------------------------------------
 
 
+            #endregion
+
+            #region Exercise 5
+
+          //  // Exercise 5: Print Queue Simulator
+          //  // Simulate a printer queue
+          //  // Create a Queue<string> and enqueue 5 documents: "Report.pdf", "Invoice.pdf", "Letter.docx", "Resume.pdf", "Photo.jpg"
+
+          //  // 1) Print the queue contents and Count
+          //  // 2) Use Peek to see which document will print next(without removing)
+          //  // 3) Process the queue: Dequeue each document and print "Printing: [name]"
+          //  // 4) Try TryDequeue on the now - empty queue — what happens?
+
+          //  //---------------------------------------------------------------------------------------------------------
+
+          //  // Fifo => First In First Out
+
+          //  // 1) Print the queue contents and Count
+
+          //  Queue<string> QueueDoc = new Queue<string>();
+
+          //  QueueDoc.Enqueue("Report.pdf");
+          //  QueueDoc.Enqueue("Invoice.pdf");
+          //  QueueDoc.Enqueue("Letter.docx");
+          //  QueueDoc.Enqueue("Resume.pdf");
+          //  QueueDoc.Enqueue("Photo.jpg");
+
+
+          //  //CollectionHelper.PrintCollection("Queue Contents ", QueueDoc);
+          //  //Console.WriteLine($"Queue Count: {QueueDoc.Count}");
+
+          //  //---------------------------------------------------------------------------------------------------------
+
+          //  // 2) Use Peek to see which document will print next(without removing)
+
+          //  //  Console.WriteLine(QueueDoc.Peek());
+          //  //---------------------------------------------------------------------------------------------------------
+
+          //  // 3) Process the queue: Dequeue each document and print "Printing: [name]"
+
+          //  //while (QueueDoc.Count > 0)
+          //  //{
+          //  //    Console.WriteLine($"Printing: {QueueDoc.Dequeue()}");
+          //  //}
+          //  //----------------------------------------------------------------------------------------------------------
+
+          //  // 4) Try TryDequeue on the now - empty queue — what happens?
+
+          ////  bool isQueueEmpty = QueueDoc.TryDequeue(out string docName);
+          ////  Console.WriteLine(isQueueEmpty ? $"Dequeued document: {docName}" : "Queue is empty, no document to dequeue");
+
+          //  //what happens?
+
+          //  // bool isQueueEmpty = QueueDoc.TryDequeue(out string docName);
+          //  // isQueueEmpty = false
+          //  // docName = null
+
+          //  // why ?  Because the queue was already emptied by:
+
+          //  //while (QueueDoc.Count > 0)
+          //  //{
+          //  //    Console.WriteLine($"Printing: {QueueDoc.Dequeue()}");
+          //  //}
+
+          //  // So when TryDequeue runs:
+          //  // There is nothing left to remove
+          //  // It does NOT throw an exception
+          //  // It safely returns false
+
+          // // Queue is empty, no document to dequeue
+
+
+
+          //  //----------------------------------------------------------------------------------------------------------
             #endregion
 
 
